@@ -2,9 +2,9 @@
 
 
 
-Nice to meet you all. My name is Daehoon Kim :)
+Nice to meet you. I'm Daehoon Kim. :)
 
-**I Write, Make and Share about** Enterprise Automation | AI System Engineering | Development | DX Strategy
+I engineer and develop solutions in enterprise automation and AI systems.
 
 ---
 
