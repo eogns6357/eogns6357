@@ -10,11 +10,11 @@ Nice to meet you all. My name is Daehoon Kim :)
 
 ## 🌐 Experience
 
-- **Enterprise Automation & AI System Engineer @ Parnas** (2023.01 ~)
+- **Enterprise Automation Developer & AI System Engineer @ Parnas** (2023.01 ~)
 
   - Engineer @ GS Holdings 52g 근무 (2024.01 ~ 2024.12)
 
-- **Consultant @ DEX Consulting** (2021.06 ~ 2022.12)
+- **Developer @ DEX Consulting** (2021.06 ~ 2022.12)
 
   - GS Retail DCX추진팀 RPA Center 근무 (2021.10 ~ 2022.12) 
 
