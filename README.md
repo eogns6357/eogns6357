@@ -2,7 +2,7 @@
 
 
 
-Nice to meet you. I'm Daehoon Kim. :)
+Nice to meet you. I'm K (Daehoon Kim). :)
 
 I engineer and develop solutions in enterprise automation and AI systems.
 
