@@ -46,14 +46,13 @@ OTA 예약 이메일
 
 **주요 구현 내용**
 - OTA별 이메일 포맷 차이를 흡수하는 **이중 파싱 파이프라인** 설계
-  - 1차: 규칙 기반 파서 (정형 포맷 고속 처리)
+  - 1차: 규칙 기반 파서
   - 2차: Amazon Bedrock Agent fallback (비정형·복잡 케이스 AI 처리)
 - 한글 성명 → 로마자 변환 로직 (성씨별 관용 표기 + 종성 보정 처리)
 - Oracle OWS SOAP XML 요청 생성 및 응답 파싱 (`create` / `modify` / `cancel`)
 - 멀티룸 예약 처리: DynamoDB 상태 추적 기반 분할 전송 및 그룹 관리
 - 수신 이메일 주소(To 헤더) 기반 멀티 호텔 라우팅
-- Bedrock API 일시 장애 대응 지수 백오프 재시도 (`max 8회`)
-- CloudWatch 민감 정보 노출 방지 (SOAP XML 로깅 환경변수 토글)
+- Bedrock API 일시 장애 대응
 
 **Stack**
 `Python` `AWS Lambda` `Amazon S3` `Amazon SES` `Amazon DynamoDB` `Amazon Bedrock` `Oracle OWS` `SOAP/XML` `boto3`
