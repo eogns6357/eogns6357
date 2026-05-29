@@ -60,28 +60,29 @@ OTA 예약 이메일
 
 ---
 
-  ### 🎟️  상품권 불출 관리 시스템
-  > Gift Voucher Management System
+### 🎟️  상품권 불출 관리 시스템
+> Gift Voucher Management System
 
-  호텔 상품권 발행·불출·서명·정산 전 과정을 디지털화한 사내 전용 시스템
+호텔 상품권 발행·불출·서명·정산 전 과정을 디지털화한 사내 전용 시스템
+```
+**Architecture Flow**
+Next.js 16 (App Router / TypeScript)
+    └── AWS API Gateway
+            └── AWS Lambda (Python 3.11 · Serverless Framework)
+                    ├── Amazon DynamoDB (재고 · 불출 이력 관리)
+                    └── Microsoft Graph API
+                                └── SharePoint (불출대장 동기화)
+```
 
-  **Architecture Flow**
-  Next.js 16 (App Router / TypeScript)
-      └── AWS API Gateway
-              └── AWS Lambda (Python 3.11 · Serverless Framework)
-                      ├── Amazon DynamoDB (재고 · 불출 이력 관리)
-                      └── Microsoft Graph API
-                                  └── SharePoint (불출대장 동기화)
+**주요 구현 내용**
+- **역할 분리 UI** — 관리자(발행·승인·정산) / 수령자(모바일 수령·서명) 흐름 분리
+- 전자 서명 캡처 및 서명 이미지 저장 (`react-signature-canvas`)
+- 불출 이력 Excel 내보내기 (`xlsx`)
+- Microsoft MSAL(Azure AD) SSO 기반 관리자 인증
+- SharePoint 상품권 불출대장 자동 동기화 (Microsoft Graph API)
+- DynamoDB 단일 테이블 설계로 재고 추적 및 이력 관리
 
-  **주요 구현 내용**
-  - **역할 분리 UI** — 관리자(발행·승인·정산) / 수령자(모바일 수령·서명) 흐름 분리
-  - 전자 서명 캡처 및 서명 이미지 저장 (`react-signature-canvas`)
-  - 불출 이력 Excel 내보내기 (`xlsx`)
-  - Microsoft MSAL(Azure AD) SSO 기반 관리자 인증
-  - SharePoint 상품권 불출대장 자동 동기화 (Microsoft Graph API)
-  - DynamoDB 단일 테이블 설계로 재고 추적 및 이력 관리
-
-  **Stack:** `Next.js 16` `React 19` `TypeScript` `Tailwind CSS` `Python 3.11` `AWS Lambda` `Amazon DynamoDB` `Serverless Framework` `Microsoft Graph API` `Azure MSAL`
+**Stack:** `Next.js 16` `React 19` `TypeScript` `Tailwind CSS` `Python 3.11` `AWS Lambda` `Amazon DynamoDB` `Serverless Framework` `Microsoft Graph API` `Azure MSAL`
 
 ---
 
@@ -92,6 +93,7 @@ OTA 예약 이메일
 버튼 하나로 녹음 → 언어 감지 → 번역 → 음성 재생까지 자동으로 처리됩니다.
 
 **Architecture Flow**
+```
 마이크 입력 (MediaRecorder API)
     └── Azure Speech SDK (브라우저 Client-side STT)
             ├── 자동 언어 감지 (ko / en / ja / zh-CN / fr-FR / hi-IN)
@@ -100,6 +102,7 @@ OTA 예약 이메일
                             ├── Azure OpenAI GPT-4o (텍스트 번역)
                             └── Azure Speech Service (Server-side TTS)
                                     └── MP3 Base64 → 브라우저 재생
+```
 
 **주요 구현 내용**
 - STT는 브라우저에서, 번역·TTS는 서버에서 처리하는 **분산 파이프라인** 설계
@@ -120,12 +123,14 @@ OTA 예약 이메일
 KIS OpenAPI로 실시간 시세·차트를 수신하고, Gemini AI 기술 분석과 Telegram 알림을 통합한 올인원 트레이딩 시스템.
 
 **Architecture Flow**
+```
 KIS OpenAPI (한국투자증권)
     └── Next.js API Routes (서버사이드 전용)
             ├── 현재가 / 일봉 OHLCV / KOSPI·KOSDAQ 지수
             ├── 스크리너 (30개 종목 × 200일 → 점수 정렬)
             └── Google Gemini 2.0 Flash (AI 기술분석)
                     └── Telegram Bot API (알림 발송)
+```
 
 **주요 구현 내용**
 - KIS OpenAPI 토큰 23시간 메모리 캐시 및 `kisGet()` 헬퍼 추상화
