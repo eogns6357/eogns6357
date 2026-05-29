@@ -29,7 +29,7 @@
 ### 🏨 Hotel OTA Booking Automation (OWS Handler)
 > OTA 예약 이메일 → Opera PMS 자동 처리 시스템
 
-호텔 글로벌 모든 OTA(Agoda, Expedia등)에서 수신되는 예약 이메일을 파싱하여  
+호텔 글로벌 모든 OTA(Agoda, Expedia 등)에서 수신되는 예약 이메일을 파싱하여  
 Oracle OWS SOAP API를 통해 Opera PMS에 자동으로 예약을 생성·수정·취소하는 서버리스 시스템
 
 **Architecture Flow**
